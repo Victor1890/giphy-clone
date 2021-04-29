@@ -1,6 +1,16 @@
+import CardGif from "../../components/CardGif/CardGif";
+import useGlobalGif from "../../hooks/useGlobalGif";
+
 const Details = ({ params }) => {
-  console.log(params);
-  return <h1>{params.id}</h1>;
+  const gifs = useGlobalGif();
+
+  const gif = gifs.find((singleGif) => singleGif.id === params.id);
+
+  return (
+    <>
+      <CardGif {...gif} />
+    </>
+  );
 };
 
 export default Details;

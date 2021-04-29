@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
+import ListOfGif from "../../components/ListOfGif/ListOfGif";
+import Spinner from "../../components/Spinner";
+import { useGifs } from "../../hooks/useGifs";
 
-const POPULAR_GIFS = ["chile", "matrix", "god of war"];
+// const POPULAR_GIFS = ["chile", "matrix", "god of war"];
 
 const Home = () => {
   const [keyword, setKeyword] = useState("");
   const [, setLocation] = useLocation();
+  const { loading, gifs } = useGifs();
 
   const handlSubmit = (event) => {
     event.preventDefault();
@@ -24,13 +28,7 @@ const Home = () => {
         <input type='text' value={keyword} onChange={handleChange} />
         <button>Buscar</button>
       </form>
-      <ul>
-        {POPULAR_GIFS.map((popularGifs) => (
-          <li key={popularGifs}>
-            <Link to={`/search/${popularGifs}`}>Gifs de {popularGifs}</Link>
-          </li>
-        ))}
-      </ul>
+      {loading ? <Spinner /> : <ListOfGif gifs={gifs} />}
     </>
   );
 };
