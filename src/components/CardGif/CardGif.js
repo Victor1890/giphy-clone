@@ -1,17 +1,16 @@
 import { Link } from "wouter";
+import { CardGifContent, GifsButton, GifsTitle, GifsImg } from "./styles";
 
-import "./CardGif.css";
+import "./styles.css";
 
 const CardGif = ({ title, id, url }) => (
-  <div className='Gif'>
-    <div className='Gif-buttons'>
-      <h4 id={id}>{title}</h4>
-    </div>
+  <CardGifContent className='Gif'>
+    <GifsButton>{/* <h4 id={id}>{title}</h4> */}</GifsButton>
     <Link to={`/gif/${id}`} className='Gif-link'>
-      <h4>{title}</h4>
-      <img loading='lazy' alt={title} src={url} />
+      <GifsTitle>{title}</GifsTitle>
+      <GifsImg loading='lazy' alt={title} src={url} />
     </Link>
-  </div>
+  </CardGifContent>
 );
 
 export default CardGif;

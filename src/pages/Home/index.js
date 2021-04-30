@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import ListOfGif from "../../components/ListOfGif/ListOfGif";
-import Spinner from "../../components/Spinner";
-import { useGifs } from "../../hooks/useGifs";
-
-// const POPULAR_GIFS = ["chile", "matrix", "god of war"];
+import ListOfGif from "components/ListOfGif/ListOfGif";
+import Spinner from "components/Spinner";
+import TrendingSearches from "components/TrendingSearches";
+import { useGifs } from "hooks/useGifs";
 
 const Home = () => {
   const [keyword, setKeyword] = useState("");
@@ -29,6 +28,7 @@ const Home = () => {
         <button>Buscar</button>
       </form>
       {loading ? <Spinner /> : <ListOfGif gifs={gifs} />}
+      <TrendingSearches />
     </>
   );
 };

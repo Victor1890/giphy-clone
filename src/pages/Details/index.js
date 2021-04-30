@@ -1,5 +1,5 @@
-import CardGif from "../../components/CardGif/CardGif";
-import useGlobalGif from "../../hooks/useGlobalGif";
+import CardGif from "components/CardGif/CardGif";
+import useGlobalGif from "hooks/useGlobalGif";
 
 const Details = ({ params }) => {
   const gifs = useGlobalGif();
@@ -8,6 +8,7 @@ const Details = ({ params }) => {
 
   return (
     <>
+      <h1>{gif.title}</h1>
       <CardGif {...gif} />
     </>
   );
