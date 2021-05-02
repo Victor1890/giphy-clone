@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import ListOfGif from "components/ListOfGif/ListOfGif";
 import Spinner from "components/Spinner";
-import TrendingSearches from "components/TrendingSearches";
+import LazyTrending from "components/TrendingSearches";
 import { useGifs } from "hooks/useGifs";
 
 const Home = () => {
@@ -28,7 +28,7 @@ const Home = () => {
         <button>Buscar</button>
       </form>
       {loading ? <Spinner /> : <ListOfGif gifs={gifs} />}
-      <TrendingSearches />
+      <LazyTrending />
     </>
   );
 };
