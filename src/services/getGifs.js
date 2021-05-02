@@ -1,7 +1,7 @@
 import { APIKEY, API_URL } from "./settings";
 
 export const getGifs = async ({ keyword, limit = 25, page = 0 } = {}) => {
-  let endPoint = `${API_URL}/gifs/search?api_key=${APIKEY}=${keyword}&limit=${limit}&offset=${
+  const endPoint = `${API_URL}/gifs/search?api_key=${APIKEY}=${keyword}&limit=${limit}&offset=${
     page * limit
   }&rating=r&lang=en`;
 

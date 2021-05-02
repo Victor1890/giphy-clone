@@ -11,6 +11,7 @@ export const useGifs = ({ keyword } = { keyword: null }) => {
   const [page, setPage] = useState(INITIAL_PAGE);
   const { gifs, setGifs } = useContext(GifsContext);
 
+  //recovery keyword in localStorage
   const keywordToUse =
     keyword || localStorage.getItem("lastKeyword") || "random";
 
@@ -20,6 +21,8 @@ export const useGifs = ({ keyword } = { keyword: null }) => {
     getGifs({ keyword: keywordToUse }).then((gifs) => {
       setGifs(gifs);
       setLoading(false);
+
+      //saved keyword in localStorage
       localStorage.setItem("lastKeyword", keyword);
     });
   }, [keyword, keywordToUse, setGifs]);
@@ -35,7 +38,7 @@ export const useGifs = ({ keyword } = { keyword: null }) => {
         setLoadingNextPage(false);
       });
     },
-    [page, setPage, loadingNextPage, keywordToUse, setGifs],
+    [page, keywordToUse, setGifs],
   );
 
   return {
